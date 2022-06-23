@@ -9,6 +9,8 @@ import com.vfsco.dbb.datasharepoc.repo.CustomerEntity;
 @Mapper(componentModel = "cdi")
 public interface CustomerEntityMapper {
     
-    public List<Customer> mapToDomain(List<CustomerEntity> entityList);
+    public List<Customer> mapToDomain(List<CustomerEntity> customerEntityList);
+
+    public Customer mapToDomain(CustomerEntity customerEntity);
 
 }

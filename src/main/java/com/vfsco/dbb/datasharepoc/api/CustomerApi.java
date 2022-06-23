@@ -4,10 +4,13 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.vfsco.dbb.datasharepoc.service.Customer;
 import com.vfsco.dbb.datasharepoc.service.CustomerService;
 
 import lombok.AllArgsConstructor;
@@ -27,6 +30,16 @@ public class CustomerApi {
     public List<CustomerSchema> findAll() {
         log.debug("Finding all customers");
         return mapper.mapToSchema(service.findAll());
+    }
+
+    @GET
+    @Path("/{id}")
+    public CustomerSchema findById(@PathParam("id") Long id) {
+        var customer = service.findById(id);
+        if (customer == null) {
+            throw new NotFoundException(String.format("Customer with id %d not found", id));
+        }
+        return mapper.mapToSchema(customer);
     }
     
 }

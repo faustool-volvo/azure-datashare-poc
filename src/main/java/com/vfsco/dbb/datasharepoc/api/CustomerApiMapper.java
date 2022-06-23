@@ -9,6 +9,8 @@ import com.vfsco.dbb.datasharepoc.service.Customer;
 @Mapper(componentModel = "cdi")
 public interface CustomerApiMapper {
 
-    public List<CustomerSchema> mapToSchema(List<Customer> serviceCustomerList);
+    public List<CustomerSchema> mapToSchema(List<Customer> customerList);
+
+    public CustomerSchema mapToSchema(Customer customer);
     
 }

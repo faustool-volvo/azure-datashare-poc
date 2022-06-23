@@ -19,4 +19,8 @@ public class CustomerService {
         return repository.findAll();
     }
 
+    public Customer findById(Long id) {
+        return repository.findById(id);
+    }
+
 }
